@@ -198,17 +198,17 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
-  // let square = '';
-  // const topBorder = `┌` + '-'.repeat(width - 2) + `┐\n`;
-  // let middle = '';
-  // for (let i = 1; i < height; i++) {
-  //   middle += '│' + ' '.repeat(height - 2) + '│\n';
-  // }
-  // const bottomBorder = `└` + '-'.repeat(width - 2) + `┘`;
-  // square = topBorder + middle + bottomBorder;
-  // return square;
+function getRectangleString(width, height) {
+  const topBorder = `┌${'─'.repeat(width - 2)}┐\n`;
+  const middle = `│${' '.repeat(width - 2)}│\n`;
+  const bottomBorder = `└${'─'.repeat(width - 2)}┘\n`;
+  let square = topBorder;
+  for (let i = 0; i < height - 2; i += 1) {
+    square += middle;
+  }
+  square += bottomBorder;
+
+  return square;
 }
 
 /**
@@ -256,8 +256,8 @@ function encodeToRot13(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 /**
@@ -284,8 +284,62 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(card) {
+  const cards = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
+  return cards.indexOf(card);
 }
 
 module.exports = {
